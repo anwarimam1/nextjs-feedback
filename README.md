@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Feedback App (Next.js + Docker)
 
-## Getting Started
+## 📌 Description
 
-First, run the development server:
+This is a simple Feedback Application built using Next.js.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Users can submit feedback (name and message), and all feedback entries are displayed in a list.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application includes validation, duplicate prevention, API endpoints, and Docker support.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Features
 
-## Learn More
+- Submit feedback (Name + Message)
+- Validation:
+  - Name is required
+  - Message must be between 10–200 characters
+  - Duplicate feedback is prevented
+- Fetch all feedback
+- Loading, success, and error states
+- Sorting feedback (latest first)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔌 API Endpoints
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### POST /api/feedback
 
-## Deploy on Vercel
+Submit feedback
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Request:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```json
+{
+  "name": "John",
+  "message": "This is feedback"
+}
+
+
+# 🧪 curl
+
+POST request:
+curl -X POST http://localhost:3000/api/feedback \
+-H "Content-Type: application/json" \
+-d '{"name":"test","message":"This is valid feedback"}'
+
+GET request:
+curl http://localhost:3000/api/feedback
+
+
+# 🧠 Assumptions
+
+- Feedback data is stored in memory (no database used)
+- Duplicate feedback is checked using same name + message
+- Data resets when the server restarts
+- Feedback is sorted with latest entries first
+
+
+# 🧠 Assumptions
+
+- Feedback data is stored in memory (no database used)
+- Duplicate feedback is checked using same name + message
+- Data resets when the server restarts
+- Feedback is sorted with latest entries first
+
+
+# 🐳 Docker
+
+Build Docker image:
+docker build -t nextjs-feedback .
+
+Run container:
+docker run -p 3000:3000 nextjs-feedback
+
+---
+
+# ☁️ Docker (CI/CD)
+
+The Docker image was built using GitHub Actions (CI/CD pipeline) and pushed to Docker Hub.
+
+Pull image:
+docker pull imamanwar11/nextjs-feedback
+
+Run:
+docker run -p 3000:3000 imamanwar11/nextjs-feedback
