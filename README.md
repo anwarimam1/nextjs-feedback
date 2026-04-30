@@ -83,4 +83,4 @@ Pull image:
 docker pull imamanwar11/nextjs-feedback
 
 Run:
-docker run -p 3000:3000 imamanwar11/nextjs-feedback
+docker run -p 3000:3000 imamanwar11/nextjs-feedback 
