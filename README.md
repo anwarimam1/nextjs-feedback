@@ -38,7 +38,7 @@ Request:
 }
 
 
-# 🧪 curl
+## 🧪 curl
 
 POST request:
 curl -X POST http://localhost:3000/api/feedback \
@@ -49,7 +49,7 @@ GET request:
 curl http://localhost:3000/api/feedback
 
 
-# 🧠 Assumptions
+## 🧠 Assumptions
 
 - Feedback data is stored in memory (no database used)
 - Duplicate feedback is checked using same name + message
@@ -57,7 +57,7 @@ curl http://localhost:3000/api/feedback
 - Feedback is sorted with latest entries first
 
 
-# 🧠 Assumptions
+## 🧠 Assumptions
 
 - Feedback data is stored in memory (no database used)
 - Duplicate feedback is checked using same name + message
@@ -65,7 +65,7 @@ curl http://localhost:3000/api/feedback
 - Feedback is sorted with latest entries first
 
 
-# 🐳 Docker
+## 🐳 Docker
 
 Build Docker image:
 docker build -t nextjs-feedback .
